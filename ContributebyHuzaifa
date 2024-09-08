@@ -1,0 +1,21 @@
+class FibonacciIterator:  #sahi wala
+    def __init__(self, num_terms):
+        self.num_terms = num_terms
+        self.current_term = 0
+        self.a, self.b = 0, 1
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.current_term < self.num_terms:
+            fib_num = self.a
+            self.a, self.b = self.b, self.a + self.b
+            self.current_term += 1
+            return fib_num
+        else:
+            raise StopIteration
+
+fib_iter = FibonacciIterator(10)
+for num in fib_iter:
+    print(num)
